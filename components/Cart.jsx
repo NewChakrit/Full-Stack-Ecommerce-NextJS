@@ -1,15 +1,17 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import {
-  AiOutlinePlus,
   AiOutlineMinus,
-  AiOutlineShopping,
+  AiOutlinePlus,
   AiOutlineLeft,
+  AiOutlineShopping,
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import toast from "react-hot-toast";
+
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
+import getStripe from "../lib/getStripe";
 
 const Cart = () => {
   const cartRef = useRef();
@@ -18,16 +20,36 @@ const Cart = () => {
     totalQuantities,
     cartItems,
     setShowCart,
-    toggleCartItemQuantitiy,
+    toggleCartItemQuanitity,
     onRemove,
   } = useStateContext();
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    toast.loading("Redirecting...");
+
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };
 
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
         <button
-          className="cart-heading"
           type="button"
+          className="cart-heading"
           onClick={() => setShowCart(false)}
         >
           <AiOutlineLeft />
@@ -42,10 +64,10 @@ const Cart = () => {
             <Link href="/">
               <button
                 type="button"
-                className="btn"
                 onClick={() => setShowCart(false)}
+                className="btn"
               >
-                Countinue Shopping
+                Continue Shopping
               </button>
             </Link>
           </div>
@@ -53,7 +75,7 @@ const Cart = () => {
 
         <div className="product-container">
           {cartItems.length >= 1 &&
-            cartItems.map((item, index) => (
+            cartItems.map((item) => (
               <div className="product" key={item._id}>
                 <img
                   src={urlFor(item?.image[0])}
@@ -70,7 +92,7 @@ const Cart = () => {
                         <span
                           className="minus"
                           onClick={() =>
-                            toggleCartItemQuantitiy(item._id, "dec")
+                            toggleCartItemQuanitity(item._id, "dec")
                           }
                         >
                           <AiOutlineMinus />
@@ -81,7 +103,7 @@ const Cart = () => {
                         <span
                           className="plus"
                           onClick={() =>
-                            toggleCartItemQuantitiy(item._id, "inc")
+                            toggleCartItemQuanitity(item._id, "inc")
                           }
                         >
                           <AiOutlinePlus />
@@ -89,8 +111,8 @@ const Cart = () => {
                       </p>
                     </div>
                     <button
-                      className="remove-item"
                       type="button"
+                      className="remove-item"
                       onClick={() => onRemove(item)}
                     >
                       <TiDeleteOutline />
@@ -107,7 +129,7 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
-              <button type="botton" className="btn" onClick="">
+              <button type="button" className="btn" onClick={handleCheckout}>
                 Pay with Stripe
               </button>
             </div>

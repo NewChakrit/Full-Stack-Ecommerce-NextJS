@@ -402,10 +402,10 @@
   "resolved" "https://registry.npmjs.org/@sanity/timed-out/-/timed-out-4.0.2.tgz"
   "version" "4.0.2"
 
-"@stripe/stripe-js@^1.29.0":
-  "integrity" "sha512-OsUxk0VLlum8E2d6onlEdKuQcvLMs7qTrOXCnl/BGV3fAm65qr6h3e1IZ5AX4lgUlPRrzRcddSOA5DvkKKYLvg=="
-  "resolved" "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.29.0.tgz"
-  "version" "1.29.0"
+"@stripe/stripe-js@^1.25.0":
+  "integrity" "sha512-cywIoKu3sJnBPQ1eKi3BzFHWslA2ePqHvQhcxp7iYYlo1tWcVgEKTSh7y7hb6GoR4TyT3DwlK4v1vOZpVg8u4Q=="
+  "resolved" "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.25.0.tgz"
+  "version" "1.25.0"
 
 "@types/json5@^0.0.29":
   "integrity" "sha1-7ihweulOEdK4J7y+UnC86n8+ce4="
@@ -1886,7 +1886,7 @@
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
   "version" "2.1.1"
 
-"qs@^6.10.3":
+"qs@^6.6.0":
   "integrity" "sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ=="
   "resolved" "https://registry.npmjs.org/qs/-/qs-6.10.3.tgz"
   "version" "6.10.3"
@@ -2146,13 +2146,13 @@
   "resolved" "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   "version" "3.1.1"
 
-"stripe@^8.220.0":
-  "integrity" "sha512-hE3NapEqNCiiQD1lMQPccKgJsu2aANR+oDudUHcuvRnNUJ3GrbntwACs7Op45PvHpJ/RY4l46XDwTMgdWJAm3w=="
-  "resolved" "https://registry.npmjs.org/stripe/-/stripe-8.220.0.tgz"
-  "version" "8.220.0"
+"stripe@^8.209.0":
+  "integrity" "sha512-ozfs8t0fxA/uvCK1DNvitSdEublOHK5CTRsrd2AWWk9LogjXcfkxmtz3KGSSQd+jyA2+rbee9TMzhJ6aabQ5WQ=="
+  "resolved" "https://registry.npmjs.org/stripe/-/stripe-8.209.0.tgz"
+  "version" "8.209.0"
   dependencies:
     "@types/node" ">=8.1.0"
-    "qs" "^6.10.3"
+    "qs" "^6.6.0"
 
 "styled-jsx@5.0.2":
   "integrity" "sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ=="
